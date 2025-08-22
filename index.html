@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SEO Nexus - Advanced Website Audit Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="ai-icon">🧠</span>
+                    AI SEO Nexus
+                </h1>
+                <nav class="nav">
+                    <a href="#audit" class="nav-link">Audit</a>
+                    <a href="#history" class="nav-link">History</a>
+                    <a href="#insights" class="nav-link">AI Insights</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">Advanced AI-Powered SEO Analysis</h2>
+                    <p class="hero-subtitle">Comprehensive website auditing with real-time insights and actionable recommendations</p>
+                    
+                    <div class="url-input-section">
+                        <div class="input-group">
+                            <input type="url" id="urlInput" class="url-input" placeholder="Enter your website URL (e.g., https://example.com)">
+                            <button id="auditBtn" class="audit-btn">
+                                <span class="btn-text">Start AI Audit</span>
+                                <span class="btn-icon">🚀</span>
+                            </button>
+                        </div>
+                        <div class="url-validation" id="urlValidation"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Section -->
+        <section class="loading-section hidden" id="loadingSection">
+            <div class="container">
+                <div class="loading-content">
+                    <div class="siri-animation">
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring"></div>
+                    </div>
+                    <h3 class="loading-title">AI Analysis in Progress</h3>
+                    <p class="loading-text" id="loadingText">Initializing audit systems...</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Dashboard -->
+        <section class="dashboard hidden" id="dashboard">
+            <div class="container">
+                <!-- Score Cards -->
+                <div class="score-cards">
+                    <div class="score-card overall">
+                        <div class="score-card-header">
+                            <h3>Overall SEO Score</h3>
+                            <span class="score-trend">↗ +5</span>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-number" id="overallScore">73</div>
+                            <div class="score-circle">
+                                <canvas id="overallChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="score-card technical">
+                        <div class="score-card-header">
+                            <h3>Technical SEO</h3>
+                            <span class="score-trend">↗ +5</span>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-number" id="technicalScore">65</div>
+                            <div class="score-circle">
+                                <canvas id="technicalChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="score-card performance">
+                        <div class="score-card-header">
+                            <h3>Performance</h3>
+                            <span class="score-trend">↗ +3</span>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-number" id="performanceScore">82</div>
+                            <div class="score-circle">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="score-card accessibility">
+                        <div class="score-card-header">
+                            <h3>Accessibility</h3>
+                            <span class="score-trend">↗ +6</span>
+                        </div>
+                        <div class="score-display">
+                            <div class="score-number" id="accessibilityScore">78</div>
+                            <div class="score-circle">
+                                <canvas id="accessibilityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audit Sections -->
+                <div class="audit-sections">
+                    <!-- Technical SEO Section -->
+                    <div class="audit-section">
+                        <div class="section-header">
+                            <h3>🔧 Technical SEO Analysis</h3>
+                            <div class="section-score">Score: <span class="score-highlight">65/100</span></div>
+                        </div>
+                        <div class="issues-grid" id="technicalIssues">
+                            <!-- Issues will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Performance Section -->
+                    <div class="audit-section">
+                        <div class="section-header">
+                            <h3>⚡ Performance Metrics</h3>
+                            <div class="section-score">Score: <span class="score-highlight">82/100</span></div>
+                        </div>
+                        <div class="performance-metrics">
+                            <div class="cwv-metrics">
+                                <h4>Core Web Vitals</h4>
+                                <div class="cwv-grid">
+                                    <div class="cwv-item">
+                                        <span class="cwv-label">LCP</span>
+                                        <span class="cwv-value good">2.1s</span>
+                                    </div>
+                                    <div class="cwv-item">
+                                        <span class="cwv-label">CLS</span>
+                                        <span class="cwv-value good">0.08</span>
+                                    </div>
+                                    <div class="cwv-item">
+                                        <span class="cwv-label">INP</span>
+                                        <span class="cwv-value good">180ms</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="speed-scores">
+                                <div class="speed-item">
+                                    <span class="speed-label">Desktop</span>
+                                    <span class="speed-value">89</span>
+                                </div>
+                                <div class="speed-item">
+                                    <span class="speed-label">Mobile</span>
+                                    <span class="speed-value">76</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Analysis -->
+                    <div class="audit-section">
+                        <div class="section-header">
+                            <h3>📄 Content Analysis</h3>
+                            <div class="section-score">Score: <span class="score-highlight">78/100</span></div>
+                        </div>
+                        <div class="content-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Internal Links</span>
+                                <span class="stat-value">47</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">External Links</span>
+                                <span class="stat-value">12</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Broken Links</span>
+                                <span class="stat-value warning">3</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Images w/ Alt</span>
+                                <span class="stat-value">13/28</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Insights Section -->
+                    <div class="audit-section ai-insights" id="insights">
+                        <div class="section-header">
+                            <h3>🤖 AI-Powered Insights</h3>
+                            <div class="insights-badge">Prioritized by Impact × Effort</div>
+                        </div>
+                        <div class="insights-list" id="insightsList">
+                            <!-- AI insights will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History Section -->
+                <div class="history-section" id="history">
+                    <div class="section-header">
+                        <h3>📈 Historical Performance</h3>
+                        <button class="schedule-btn">Schedule Recurring Audits</button>
+                    </div>
+                    <div class="chart-container" style="position: relative; height: 400px;">
+                        <canvas id="historyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Download Report Button -->
+                <div class="report-section">
+                    <button id="downloadReportBtn" class="download-btn">
+                        <span class="btn-icon">📊</span>
+                        Download Professional PDF Report
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 AI SEO Nexus. Advanced SEO Analysis Platform.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
